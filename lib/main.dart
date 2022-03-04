@@ -13,11 +13,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-
       title: 'ShopFlow',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      initialRoute: '/welcomeScreen',
+      getPages: [
+
+      ],
       home:  WelcomeScreen(),
     );
   }
