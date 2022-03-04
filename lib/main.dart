@@ -16,9 +16,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ShopFlow',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+
       initialRoute: AppRoutes.welcome,
       getPages: AppRoutes.routes,
 

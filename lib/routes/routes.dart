@@ -8,7 +8,7 @@ class AppRoutes {
   // initial route
   static const welcome = Routes.welcomeScreen;
 
-//getPages
+//getPages list of routes
   static final routes = [
     // ! route  for initial page
     GetPage(name: Routes.welcomeScreen, page: () => WelcomeScreen()),

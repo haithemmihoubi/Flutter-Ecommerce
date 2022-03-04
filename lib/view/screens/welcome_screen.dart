@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutterecommerce/routes/routes.dart';
-import 'package:flutterecommerce/view/screens/auth/login_screen.dart';
 import 'package:get/get.dart';
 
 import '../../utils/theme.dart';
@@ -84,7 +82,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Get.toNamed(Routes.loginScreen);
+                    Get.offNamed(Routes.loginScreen);
                   },
                   child: TextUtils(
                       fontSize: 20,
@@ -113,7 +111,7 @@ class WelcomeScreen extends StatelessWidget {
                         underline: TextDecoration.none),
                     TextButton(
                       onPressed: () {
-                        Get.toNamed(Routes.signUpScreen);
+                        Get.offNamed(Routes.signUpScreen);
                       },
                       child: TextUtils(
                         color: mainColor3,

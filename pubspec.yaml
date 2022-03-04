@@ -41,6 +41,8 @@ dependencies:
   get_storage:
   google_fonts:
   http:
+  eva_icons_flutter: ^3.1.0
+  line_icons: ^2.0.0
 
 dev_dependencies:
   flutter_test:

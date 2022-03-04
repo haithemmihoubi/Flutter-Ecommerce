@@ -5,9 +5,9 @@ class TextUtils extends StatelessWidget {
   final String text;
   final double fontSize;
   final FontWeight? fontWeight;
-
   final Color color;
-final  TextDecoration underline ;
+  final TextDecoration underline;
+
   const TextUtils(
       {required this.color,
       required this.underline,
@@ -23,7 +23,10 @@ final  TextDecoration underline ;
       text,
       style: GoogleFonts.lato(
         decoration: underline,
-          color: color, fontSize: fontSize, fontWeight: fontWeight),
+        color: color,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+      ),
     );
   }
 }
