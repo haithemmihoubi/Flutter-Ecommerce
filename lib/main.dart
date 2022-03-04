@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterecommerce/routes/routes.dart';
 import 'package:flutterecommerce/view/screens/welcome_screen.dart';
 import 'package:get/get.dart';
 
@@ -13,15 +14,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'ShopFlow',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/welcomeScreen',
-      getPages: [
+      initialRoute: AppRoutes.welcome,
+      getPages: AppRoutes.routes,
 
-      ],
-      home:  WelcomeScreen(),
     );
   }
 }
