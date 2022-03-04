@@ -5,6 +5,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:line_icons/line_icons.dart';
 
 import '../../widgets/auth/auth_text_form_field.dart';
+import '../../widgets/auth/check_widget.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -17,6 +18,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     final TextEditingController nameController = TextEditingController();
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -28,7 +31,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
           children: [
             Container(
               width: double.infinity,
-              height: MediaQuery.of(context).size.height / 1.3,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height / 1.3,
               child: Padding(
                 padding: EdgeInsets.only(
                   left: 25,
@@ -57,15 +63,57 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ],
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 50,
                     ),
                     AuthTextFormField(
                       controller: nameController,
                       obscureText: false,
                       validation: () {},
-                      prefixIcon: Icon(LineIcons.userCircleAlt,color: mainColor2,size: 35,),
-
+                      prefixIcon: Icon(
+                        LineIcons.userCircleAlt,
+                        color: mainColor,
+                        size: 35,
+                      ),
+                      suffixIcon: Text(""),
+                      hintText: "Username",
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    AuthTextFormField(
+                      controller: emailController,
+                      obscureText: false,
+                      validation: () {},
+                      prefixIcon: Icon(
+                        LineIcons.envelopeAlt,
+                        color: mainColor,
+                        size: 35,
+                      ),
+                      suffixIcon: Text(""),
+                      hintText: "Email",
+                    ), SizedBox(
+                      height: 20,
+                    ), AuthTextFormField(
+                      controller: passwordController,
+                      obscureText: true,
+                      validation: () {},
+                      prefixIcon: Icon(
+                        LineIcons.lock,
+                        color: mainColor,
+                        size: 35,
+                      ),
+                      suffixIcon: Icon(
+                        LineIcons.eyeAlt,
+                        color: mainColor,
+                        size: 35,
+                      ),
+                      hintText: "Password",
+                    ),
+                    SizedBox(height: 20,),
+                    CheckWidget()
+
+
+
                   ],
                 ),
               ),
