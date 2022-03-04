@@ -5,7 +5,6 @@ class AuthTextFormField extends StatelessWidget {
   final bool obscureText;
   final Function validation;
   final Widget prefixIcon;
-
   final Widget suffixIcon;
   final String hintText;
 
