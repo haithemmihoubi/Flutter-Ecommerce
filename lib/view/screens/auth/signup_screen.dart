@@ -78,6 +78,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           if (value.toString().length >= 2 ||
                               !RegExp(validationName).hasMatch(value)) {
                             return 'Enter a valid name';
+                          } else {
+                            return null ;
                           }
                         },
                         prefixIcon: Get.isDarkMode
@@ -104,6 +106,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           // validating the name with  the regular expression in my_string.dart
                           if (!RegExp(validationEmail).hasMatch(value)) {
                             return 'Please Enter a valid Email';
+                          }else {
+                            return null ;
                           }
                         },
                         prefixIcon: Get.isDarkMode
@@ -129,6 +133,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         validation: (value) {
                           if (value.toString().length < 6) {
                             return 'Please Enter a valid Password';
+                          }else {
+                            return null ;
                           }
                         },
                         prefixIcon: Get.isDarkMode
