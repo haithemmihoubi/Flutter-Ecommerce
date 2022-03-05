@@ -19,13 +19,14 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
+    var DarkMode = Get.isDarkMode;
     final TextEditingController nameController = TextEditingController();
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     return Scaffold(
-      backgroundColor: Get.isDarkMode? Colors.black26: Colors.white,
+      backgroundColor: DarkMode ? darkColor : Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: DarkMode ? darkColor : Colors.white,
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -35,15 +36,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
               width: double.infinity,
               height: MediaQuery.of(context).size.height / 1.3,
               child: Padding(
-                padding: EdgeInsets.only(
-                  left: 25,
-                  right: 25,
-                  top: 40,
-                ),
+                padding:
+                    EdgeInsets.only(left: 25, right: 25, top: 40, bottom: 0),
                 child: Column(
                   children: [
                     Row(
-                      children: const [
+                      children: [
                         TextUtils(
                             color: mainColor,
                             underline: TextDecoration.none,
@@ -54,7 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           width: 3,
                         ),
                         TextUtils(
-                            color: Colors.black,
+                            color: DarkMode ? Colors.black : mainColor,
                             underline: TextDecoration.none,
                             fontSize: 28,
                             text: 'UP',
@@ -68,11 +66,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       controller: nameController,
                       obscureText: false,
                       validation: () {},
-                      prefixIcon: Icon(
-                        LineIcons.userCircleAlt,
-                        color: mainColor,
-                        size: 35,
-                      ),
+                      prefixIcon: Get.isDarkMode
+                          ? Icon(
+                              LineIcons.userCircleAlt,
+                              color: Colors.black,
+                              size: 30,
+                            )
+                          : Icon(
+                              LineIcons.userCircleAlt,
+                              color: mainColor,
+                              size: 30,
+                            ),
                       suffixIcon: Text(""),
                       hintText: "Username",
                     ),
@@ -83,11 +87,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       controller: emailController,
                       obscureText: false,
                       validation: () {},
-                      prefixIcon: Icon(
-                        LineIcons.envelopeAlt,
-                        color: mainColor,
-                        size: 35,
-                      ),
+                      prefixIcon: Get.isDarkMode
+                          ? Icon(
+                              LineIcons.envelopeAlt,
+                              color: Colors.black45,
+                              size: 30,
+                            )
+                          : Icon(
+                              LineIcons.envelopeAlt,
+                              color: mainColor,
+                              size: 30,
+                            ),
                       suffixIcon: Text(""),
                       hintText: "Email",
                     ),
@@ -98,16 +108,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       controller: passwordController,
                       obscureText: true,
                       validation: () {},
-                      prefixIcon: Icon(
-                        LineIcons.lock,
-                        color: mainColor,
-                        size: 35,
-                      ),
-                      suffixIcon: Icon(
-                        LineIcons.eyeAlt,
-                        color: mainColor,
-                        size: 35,
-                      ),
+                      prefixIcon: Get.isDarkMode
+                          ? Icon(
+                              LineIcons.lock,
+                              color: mainColor,
+                              size: 30,
+                            )
+                          : Icon(
+                              LineIcons.lock,
+                              color: Colors.black45,
+                              size: 30,
+                            ),
+                      suffixIcon: Get.isDarkMode
+                          ? Icon(
+                              LineIcons.eyeAlt,
+                              color: Colors.black45,
+                              size: 35,
+                            )
+                          : Icon(
+                              LineIcons.eyeAlt,
+                              color: mainColor,
+                              size: 35,
+                            ),
                       hintText: "Password",
                     ),
                     SizedBox(
@@ -115,19 +137,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     CheckWidget(),
                     SizedBox(
-                      height: 30,
+                      height: 40,
                     ),
                     AuthButton(
                       text: 'SIGN UP',
                       onPressed: () {},
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 30,
                     ),
-                    ContainerUnder(
-                        onPressed: () {},
-                        text: 'Already have an account ?',
-                        textType: 'Login'),
                   ],
                 ),
               ),
@@ -135,6 +153,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: ContainerUnder(
+          onPressed: () {},
+          text: 'Already have an account ?',
+          textType: 'Login'),
     );
   }
 }

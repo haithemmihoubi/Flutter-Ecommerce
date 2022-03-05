@@ -2,6 +2,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterecommerce/utils/theme.dart';
 import 'package:flutterecommerce/view/widgets/text_utils.dart';
+import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 class CheckWidget extends StatelessWidget {
@@ -23,7 +24,7 @@ class CheckWidget extends StatelessWidget {
             child: Icon(
               EvaIcons.checkmark,
               color: mainColor,
-              size: 40,
+              size: 30,
             ),
           ),
         ),
@@ -31,7 +32,7 @@ class CheckWidget extends StatelessWidget {
           width: 10,
         ),
         TextUtils(
-            color: Colors.black,
+            color: Get.isDarkMode ? Colors.black : mainColor,
             underline: TextDecoration.none,
             fontSize: 15,
             text: "I accept",
@@ -40,7 +41,7 @@ class CheckWidget extends StatelessWidget {
           width: 5,
         ),
         TextUtils(
-            color: Colors.black,
+            color: Get.isDarkMode ? Colors.black : mainColor,
             underline: TextDecoration.underline,
             fontSize: 15,
             text: "terms & conditions",
