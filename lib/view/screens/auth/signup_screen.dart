@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterecommerce/utils/my_string.dart';
 import 'package:flutterecommerce/utils/theme.dart';
 import 'package:flutterecommerce/view/widgets/text_utils.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
@@ -26,7 +27,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final TextEditingController passwordController = TextEditingController();
 
     // The Form key
- final formKey= GlobalKey<FormState>() ;
+    final formKey = GlobalKey<FormState>();
 
     return Scaffold(
       backgroundColor: DarkMode ? darkColor : Colors.white,
@@ -72,7 +73,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       AuthTextFormField(
                         controller: nameController,
                         obscureText: false,
-                        validation: () {},
+                        validation: (value) {
+                          // validating the name with  the regular expression in my_string.dart
+                          if (value.toString().length >= 2 ||
+                              !RegExp(validationName).hasMatch(value)) {
+                            return 'Enter a valid name';
+                          }
+                        },
                         prefixIcon: Get.isDarkMode
                             ? Icon(
                                 LineIcons.userCircleAlt,
@@ -93,7 +100,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       AuthTextFormField(
                         controller: emailController,
                         obscureText: false,
-                        validation: () {},
+                        validation: (value) {
+                          // validating the name with  the regular expression in my_string.dart
+                          if (!RegExp(validationEmail).hasMatch(value)) {
+                            return 'Please Enter a valid Email';
+                          }
+                        },
                         prefixIcon: Get.isDarkMode
                             ? Icon(
                                 LineIcons.envelopeAlt,
@@ -114,7 +126,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       AuthTextFormField(
                         controller: passwordController,
                         obscureText: true,
-                        validation: () {},
+                        validation: (value) {
+                          if (value.toString().length < 6) {
+                            return 'Please Enter a valid Password';
+                          }
+                        },
                         prefixIcon: Get.isDarkMode
                             ? Icon(
                                 LineIcons.lock,
