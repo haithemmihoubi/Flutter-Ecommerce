@@ -7,9 +7,7 @@ import 'package:flutterecommerce/view/widgets/text_utils.dart';
 
 class AuthButton extends StatelessWidget {
   final String text;
-
   final Function() onPressed;
-
   const AuthButton({required this.text, required this.onPressed, Key? key})
       : super(key: key);
 

@@ -17,8 +17,9 @@ class CheckWidget extends StatelessWidget {
             height: 35,
             width: 35,
             decoration: BoxDecoration(
-                color: Colors.grey.shade100,
-                borderRadius: BorderRadius.circular(10)),
+              color: Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(10),
+            ),
             child: Icon(
               EvaIcons.checkmark,
               color: mainColor,

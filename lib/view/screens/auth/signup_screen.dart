@@ -3,7 +3,7 @@ import 'package:flutterecommerce/utils/theme.dart';
 import 'package:flutterecommerce/view/widgets/text_utils.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:line_icons/line_icons.dart';
-
+import 'package:get/get.dart';
 import '../../widgets/auth/auth_button.dart';
 import '../../widgets/auth/auth_text_form_field.dart';
 import '../../widgets/auth/check_widget.dart';
@@ -23,7 +23,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Get.isDarkMode? Colors.black26: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -111,17 +111,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       hintText: "Password",
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 30,
                     ),
                     CheckWidget(),
                     SizedBox(
-                      height: 20,
+                      height: 30,
                     ),
                     AuthButton(
                       text: 'SIGN UP',
                       onPressed: () {},
                     ),
-                    ContainerUnder(onPressed: () {}, text: '',)
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ContainerUnder(
+                        onPressed: () {},
+                        text: 'Already have an account ?',
+                        textType: 'Login'),
                   ],
                 ),
               ),

@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutterecommerce/utils/theme.dart';
+import 'package:flutterecommerce/view/widgets/text_utils.dart';
 
 class ContainerUnder extends StatelessWidget {
   final String text;
 
-  final Function onPressed;
+  final Function() onPressed;
+  final String textType;
 
-  const ContainerUnder({required this.text, required this.onPressed, Key? key})
+  const ContainerUnder(
+      {required this.text,
+      required this.onPressed,
+      required this.textType,
+      Key? key})
       : super(key: key);
 
   @override
@@ -14,7 +20,6 @@ class ContainerUnder extends StatelessWidget {
     return Container(
         width: double.infinity,
         height: 100,
-        color: mainColor,
         decoration: BoxDecoration(
           color: mainColor,
           borderRadius: BorderRadius.only(
@@ -23,8 +28,23 @@ class ContainerUnder extends StatelessWidget {
           ),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(text),
+            TextUtils(
+                color: Colors.white,
+                underline: TextDecoration.none,
+                fontSize: 20,
+                text: text,
+                fontWeight: FontWeight.bold),
+            TextButton(
+              onPressed: onPressed,
+              child: TextUtils(
+                  color: Colors.white,
+                  underline: TextDecoration.underline,
+                  fontSize: 20,
+                  text: textType,
+                  fontWeight: FontWeight.bold),
+            )
           ],
         ));
   }
