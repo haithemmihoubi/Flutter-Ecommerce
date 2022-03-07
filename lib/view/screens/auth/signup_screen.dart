@@ -11,13 +11,13 @@ import '../../widgets/auth/check_widget.dart';
 import '../../widgets/auth/container_under.dart';
 
 class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
-
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     var DarkMode = Get.isDarkMode;
@@ -27,7 +27,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     final TextEditingController passwordController = TextEditingController();
 
     // The Form key
-    final formKey = GlobalKey<FormState>();
 
     return Scaffold(
       backgroundColor: DarkMode ? darkColor : Colors.white,
@@ -36,11 +35,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
         elevation: 0,
       ),
       body: SingleChildScrollView(
-        child: Form(
-          key: formKey,
-          child: Column(
-            children: [
-              Container(
+        child: Column(
+          children: [
+            Form(
+              key: formKey,
+              child: Container(
                 width: double.infinity,
                 height: MediaQuery.of(context).size.height / 1.3,
                 child: Padding(
@@ -79,7 +78,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               !RegExp(validationName).hasMatch(value)) {
                             return 'Enter a valid name';
                           } else {
-                            return null ;
+                            return null;
                           }
                         },
                         prefixIcon: Get.isDarkMode
@@ -106,8 +105,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           // validating the name with  the regular expression in my_string.dart
                           if (!RegExp(validationEmail).hasMatch(value)) {
                             return 'Please Enter a valid Email';
-                          }else {
-                            return null ;
+                          } else {
+                            return null;
                           }
                         },
                         prefixIcon: Get.isDarkMode
@@ -133,32 +132,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         validation: (value) {
                           if (value.toString().length < 6) {
                             return 'Please Enter a valid Password';
-                          }else {
-                            return null ;
+                          } else {
+                            return null;
                           }
                         },
-                        prefixIcon: Get.isDarkMode
-                            ? Icon(
-                                LineIcons.lock,
-                                color: mainColor,
-                                size: 30,
-                              )
-                            : Icon(
-                                LineIcons.lock,
-                                color: Colors.black45,
-                                size: 30,
-                              ),
-                        suffixIcon: Get.isDarkMode
-                            ? Icon(
-                                LineIcons.eyeAlt,
-                                color: Colors.black45,
-                                size: 35,
-                              )
-                            : Icon(
-                                LineIcons.eyeAlt,
-                                color: mainColor,
-                                size: 35,
-                              ),
+                        prefixIcon: Icon(
+                          LineIcons.lock,
+                          color: mainColor,
+                          size: 30,
+                        ),
+                        suffixIcon: IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.visibility,
+                              color: Colors.black,
+                            )),
                         hintText: "Password",
                       ),
                       SizedBox(
@@ -178,9 +166,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ],
                   ),
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
       bottomNavigationBar: ContainerUnder(

@@ -24,7 +24,7 @@ class AuthTextFormField extends StatelessWidget {
       obscureText: obscureText,
       controller: controller,
       cursorColor: Colors.black,
-      keyboardType: TextInputType.text,
+      //keyboardType: TextInputType.text,
       validator: (value) => validation(value),
       decoration: InputDecoration(
         fillColor: Colors.grey.shade200,
