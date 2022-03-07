@@ -22,7 +22,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   // final controller = Get.put(AuthController());
   /*  instead of this we can use  */
   final controller = Get.find<AuthController>();
-
+/* lazyPut we use the controller when we need it  */
   // final controller2 = Get.lazyPut(()=>AuthController());
 
   @override
@@ -133,7 +133,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(
                         height: 20,
                       ),
-                      GetBuilder<AuthController>(builder: (_) {
+                      GetBuilder<AuthController>(
+                          builder: (_) {
                         return AuthTextFormField(
                           controller: passwordController,
                           obscureText: controller.isVisible ? false:true,
