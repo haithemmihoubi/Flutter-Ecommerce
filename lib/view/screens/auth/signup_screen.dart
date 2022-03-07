@@ -18,8 +18,12 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final controller = Get.put(AuthController());
- // final controller2 = Get.lazyPut(()=>AuthController());
+
+  // final controller = Get.put(AuthController());
+  /*  instead of this we can use  */
+  final controller = Get.find<AuthController>();
+
+  // final controller2 = Get.lazyPut(()=>AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -129,29 +133,38 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(
                         height: 20,
                       ),
-                      AuthTextFormField(
-                        controller: passwordController,
-                        obscureText: true,
-                        validation: (value) {
-                          if (value.toString().length < 6) {
-                            return 'Please Enter a valid Password';
-                          } else {
-                            return null;
-                          }
-                        },
-                        prefixIcon: Icon(
-                          LineIcons.lock,
-                          color: mainColor,
-                          size: 30,
-                        ),
-                        suffixIcon: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.visibility,
-                              color: Colors.black,
-                            )),
-                        hintText: "Password",
-                      ),
+                      GetBuilder<AuthController>(builder: (_) {
+                        return AuthTextFormField(
+                          controller: passwordController,
+                          obscureText: controller.isVisible ? false:true,
+                          validation: (value) {
+                            if (value.toString().length < 6) {
+                              return 'Please Enter a valid Password';
+                            } else {
+                              return null;
+                            }
+                          },
+                          prefixIcon: Icon(
+                            LineIcons.lock,
+                            color: mainColor,
+                            size: 30,
+                          ),
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                controller.isvisibility();
+                              },
+                              icon: controller.isVisible
+                                  ? Icon(
+                                     LineIcons.eye,
+                                      color: Colors.black,
+                                    )
+                                  : Icon(
+                                LineIcons.eyeSlashAlt,
+                                      color: Colors.black,
+                                    )),
+                          hintText: "Password",
+                        );
+                      }),
                       SizedBox(
                         height: 30,
                       ),

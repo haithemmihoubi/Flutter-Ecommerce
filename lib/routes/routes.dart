@@ -1,3 +1,4 @@
+import 'package:flutterecommerce/logic/bindings/auth_binding.dart';
 import 'package:flutterecommerce/view/screens/auth/login_screen.dart';
 import 'package:flutterecommerce/view/screens/auth/signup_screen.dart';
 import 'package:get/get.dart';
@@ -13,10 +14,13 @@ class AppRoutes {
     // ! route  for initial page
     GetPage(name: Routes.welcomeScreen, page: () => WelcomeScreen()),
     GetPage(name: Routes.loginScreen, page: () => LoginScreen()),
-    GetPage(name: Routes.signUpScreen, page: () => SignUpScreen()),
+    GetPage(
+        name: Routes.signUpScreen,
+        page: () => SignUpScreen(),
+        binding: AuthBinding()),
   ];
 }
-
+// adding the binding of Authentication instead of get.put
 // class for route names
 class Routes {
   static const String welcomeScreen = '/welcomeScreen';
