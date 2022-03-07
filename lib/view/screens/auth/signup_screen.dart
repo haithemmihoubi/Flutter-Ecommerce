@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterecommerce/logic/controller/auth_controller.dart';
 import 'package:flutterecommerce/utils/my_string.dart';
 import 'package:flutterecommerce/utils/theme.dart';
 import 'package:flutterecommerce/view/widgets/text_utils.dart';
@@ -17,6 +18,8 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final controller = Get.put(AuthController());
+ // final controller2 = Get.lazyPut(()=>AuthController());
 
   @override
   Widget build(BuildContext context) {
